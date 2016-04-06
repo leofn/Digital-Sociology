@@ -1,0 +1,22 @@
+############ Script para extrair os dados do Fórum Fitbit #####################################
+
+rm(list=ls())
+options(warn=-1)
+library("RCurl")
+library("XML")
+
+baseurl <- "https://community.fitbit.com/t5/forums/searchpage/tab/message?filter=labels%2Clocation&q=body&location=category%3Aproduct&page=XX&search_type=thread"
+dados <- data.frame()
+
+for (i in 1:76){
+  print(i)
+  url <- gsub("XX", i, baseurl)
+  url <- xmlRoot(htmlParse(readLines(url)))
+  links <- getNodeSet(url, "//h2/a") 
+  ## Links das Teses
+  links.teses <- xmlSApply(links, xmlGetAttr, name = "href")
+  ## Nomes das Edições
+  teses.titulos <- xmlSApply(links, xmlValue)
+  dados <- rbind(dados, cbind(teses.titulos, links.teses)) 
+} 
+linksfinal <- paste("https://community.fitbit.com", dados$links.teses, sep = "" )

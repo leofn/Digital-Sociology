@@ -12,10 +12,10 @@ for (i in 1:75){
   url <- xmlRoot(htmlParse(readLines(url)))
   links <- getNodeSet(url, "//h2/a") 
   ## Links das Teses
-  links.teses <- xmlSApply(links, xmlGetAttr, name = "href")
-  ## Nomes das Edições
-  teses.titulos <- xmlSApply(links, xmlValue)
-  dados <- rbind(dados, cbind(teses.titulos, links.teses)) #mudei essa linha
+  links <- xmlSApply(links, xmlGetAttr, name = "href")
+  ## Nomes das EdiÃ§Ãµes
+  links.final <- xmlSApply(links, xmlValue)
+  dados <- rbind(dados, cbind(links.final, links))
 } 
 linksfinal <- paste("https://community.fitbit.com", dados$links.teses, sep = "" )
 

@@ -1,0 +1,17 @@
+library("RCurl")
+library("XML")
+library("RJSONIO")
+library("xlsx")
+
+url <- "https://en.wikipedia.org/wiki/Mortality_rate"
+url <- xmlRoot(htmlParse(readLines(url)))
+tabela.node <- getNodeSet(url, "//table")
+tabela1 <- readHTMLTable(tabela.node[[1]])
+tabela2 <- readHTMLTable(tabela.node[[2]])
+View(tabela1)
+View(tabela2)
+library("xlsx")
+library("rJava")
+install.packages("xlsxjars")
+write.xlsx(tabela1, "C://Users//Leo//Dropbox//R_experimentos//tabela1.xlsx")
+write.xlsx(tabela2, "C://Users//Leo//Dropbox//R_experimentos//tabela2.xlsx")

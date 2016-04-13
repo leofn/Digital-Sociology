@@ -1,3 +1,6 @@
+### Esse Script só foi escrito graças ao curso Captura, sistematização e análise de "Big Data" 
+#### dos Professores: Leonardo Barone (FGV/ Cebrap) e/ou Rogério Barbosa (USP/ Cebrap) 
+
 rm(list=ls())
 options(warn=-1)
 library("RCurl")
@@ -17,7 +20,7 @@ for (i in 1:75){
   visualizacoes <- xmlSApply( visualizacoes, xmlValue)
   dados <- rbind(dados, cbind(titulo,visualizacoes, links)) 
 }
-## faltou apenas substituir os links extra�dos por links completos
+## faltou apenas substituir os links extraídos por links completos
 linksfinal <- paste("https://community.fitbit.com", dados$links, sep = "" )
 dados[["links"]] <- linksfinal
 colnames(dados)[colnames(dados) == "links"] <- "linksfinal"
@@ -42,5 +45,5 @@ for (j in linksfinal){
   }
 
 write.csv(dados, "dados_fitbit_final.csv") ## base de dados dos posts
-write.csv(conteudo, "conteudo_posts_fitbit.csv") ## base de dados com os conte�dos dos posts
+write.csv(conteudo, "conteudo_posts_fitbit.csv") ## base de dados com os conteúdos dos posts
 

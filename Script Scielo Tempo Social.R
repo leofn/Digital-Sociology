@@ -30,7 +30,7 @@ lista.links.final <- dados.pdf[grep("/pdf/ts/",dados.pdf$links.pdf),]
 
 lista.links.final <- data.frame(sapply(lista.links.final, as.character), stringsAsFactors=FALSE)
 frango <- "http://www.scielo.br/" ## "frango" é uma homenagem ao Leo Barone do MQ-FAFICH
-testefinal <- with(lista.links.final, paste(frango,lista.links.final$sapply.lista.links.final..as.character. , sep=""))
+listafinal <- with(lista.links.final, paste(frango,lista.links.final$sapply.lista.links.final..as.character. , sep=""))
 ### Download em Massa
 for (url in listafinal) {
   newName <- paste (format(Sys.time(), "%Y%m%d%H%M%S"), "-", basename(url), sep =" ")

@@ -1,5 +1,5 @@
 ##########################################################################################################
-### Script para extração dos links de todos os pdfs da Revista Tempo Social da base Scielo
+### Script para extração de todos os pdfs da Revista Tempo Social da base Scielo
 ### Autor: Leonardo F. Nascimento
 ##########################################################################################################
 rm(list=ls())
@@ -31,4 +31,8 @@ lista.links.final <- dados.pdf[grep("/pdf/ts/",dados.pdf$links.pdf),]
 lista.links.final <- data.frame(sapply(lista.links.final, as.character), stringsAsFactors=FALSE)
 frango <- "http://www.scielo.br/" ## "frango" é uma homenagem ao Leo Barone do MQ-FAFICH
 testefinal <- with(lista.links.final, paste(frango,lista.links.final$sapply.lista.links.final..as.character. , sep=""))
-write.csv(testefinal, "lista.ts.csv") #lista de links para download da revista
+### Download em Massa
+for (url in listafinal) {
+  newName <- paste (format(Sys.time(), "%Y%m%d%H%M%S"), "-", basename(url), sep =" ")
+  download.file(url, destfile = newName)
+}

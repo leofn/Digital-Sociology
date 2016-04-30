@@ -1,4 +1,7 @@
-######### SCIELO REVISTA OPINIÃO PÚBLICA #######
+##########################################################################################################
+### Script para extraÃ§Ã£o dos links de todos os pdfs da Revista OpiniÃ£o PÃºblica da base Scielo
+### Autor: Leonardo F. Nascimento
+##########################################################################################################
 rm(list=ls())
 options(warn=-1)
 options(show.error.messages = T)
@@ -21,11 +24,11 @@ for (i in links){
   links.pdf <- xmlSApply(links.pdf, xmlGetAttr, name = "href")
   dados.pdf <- rbind(dados.pdf, cbind(links.pdf))
 } 
-##atentar para o parâmetro do Grep "/pdf/xxx" o XXX deverá ser modificado de acordo
+##atentar para o parÃ¢metro do Grep "/pdf/xxx" o XXX deverÃ¡ ser modificado de acordo
 
 lista.links.final <- dados.pdf[grep("/pdf/op", dados.pdf$links.pdf),]
 lista.links.final <- data.frame(sapply(lista.links.final, as.character), stringsAsFactors=FALSE)
-frango <- "http://www.scielo.br" ## "frango" é uma homenagem ao Leo Barone do MQ-FAFICH
+frango <- "http://www.scielo.br" ## "frango" Ã© uma homenagem ao Leo Barone do MQ-FAFICH
 testefinal <- with(lista.links.final, paste(frango,lista.links.final$sapply.lista.links.final..as.character. , sep=""))
 write.csv(testefinal, "lista.op-final.csv") #lista de links para download da revista
 

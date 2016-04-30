@@ -1,3 +1,7 @@
+##########################################################################################################
+### Script para extra√ß√£o dos links de todos os pdfs da Revista Tempo Social da base Scielo
+### Autor: Leonardo F. Nascimento
+##########################################################################################################
 rm(list=ls())
 options(warn=-1)
 options(show.error.messages = T)
@@ -20,11 +24,11 @@ for (i in links){
   links.pdf <- xmlSApply(links.pdf, xmlGetAttr, name = "href")
   dados.pdf <- rbind(dados.pdf, cbind(links.pdf))
 } 
-##atentar para o par‚metro do Grep "/pdf/xxx" o XXX dever· ser modificado de acordo
+##atentar para o par√¢metro do Grep "/pdf/xxx" o XXX dever√° ser modificado de acordo
 ##com o nomeda revista
 lista.links.final <- dados.pdf[grep("/pdf/ts/",dados.pdf$links.pdf),]
 
 lista.links.final <- data.frame(sapply(lista.links.final, as.character), stringsAsFactors=FALSE)
-frango <- "http://www.scielo.br/" ## "frango" È uma homenagem ao Leo Barone do MQ-FAFICH
+frango <- "http://www.scielo.br/" ## "frango" √© uma homenagem ao Leo Barone do MQ-FAFICH
 testefinal <- with(lista.links.final, paste(frango,lista.links.final$sapply.lista.links.final..as.character. , sep=""))
 write.csv(testefinal, "lista.ts.csv") #lista de links para download da revista

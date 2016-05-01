@@ -10,7 +10,7 @@ library("XML")
 baseurl <- "http://veja.abril.com.br/blog/reinaldo/pagina/XX/"
 dados <- data.frame()
 
-for (i in 1:50){
+for (i in 1:4806){
   print(i)
   url <- gsub("XX", i, baseurl)
   url <- xmlRoot(htmlParse(readLines(url)))
@@ -20,6 +20,10 @@ for (i in 1:50){
   ## montar o dataframe
   dados <- rbind(dados, cbind(links))
   }
+  
+  ### Lista de Links das matérias
+  links <- dados[,1] 
+  ###
   ### pegar o conteúdo das matérias
   dados.final <- data.frame()
   for (j in links){

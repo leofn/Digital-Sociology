@@ -1,3 +1,8 @@
+##########################################################################################################
+### Script para extra√ß√£o de todos os textos de Reinaldo Azevedo na Revista Veja (24/06/2006 a 01/05/2016)
+### Autor: Leonardo F. Nascimento
+### Carthago delenda est: big data social science is the future 
+##########################################################################################################
 rm(list=ls())
 options(warn=-1)
 library("RCurl")
@@ -15,7 +20,7 @@ for (i in 1:50){
   ## montar o dataframe
   dados <- rbind(dados, cbind(links))
   }
-  ### pegar o conte˙do das matÈrias
+  ### pegar o conte√∫do das mat√©rias
   dados.final <- data.frame()
   for (j in links){
   print(j)
@@ -23,7 +28,7 @@ for (i in 1:50){
   ## pegar a data
   data <- getNodeSet(url, "//p/time") 
   data <- xmlSApply(data, xmlValue)
-  ## pegar o tÌtulo
+  ## pegar o t√≠tulo
     titulo <- getNodeSet(url, "//header/div[1]/h1") 
   titulo <- xmlSApply(titulo, xmlValue)
   ## pegar o texto
@@ -33,9 +38,10 @@ for (i in 1:50){
   ## montar o dataframe final com os dados
   dados.final <- rbind(dados.final, cbind(data, titulo, texto))
   }
-### Gerar um .rtf com uma tabela onde consta Data, TÌtulo e Texto
+### Gerar um .rtf com uma tabela onde consta Data, T√≠tulo e Texto
 library(rtf)
 rtffile <- RTF("azevedo.rtf")  # pode ser um .rtf ou um .doc
 addTable(rtffile, dados.final)
 done(rtffile)
+### FIM
 

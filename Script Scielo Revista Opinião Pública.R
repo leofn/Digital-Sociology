@@ -14,8 +14,8 @@ pagina <- xmlRoot(htmlParse(readLines(url.scielo)))
 links <- getNodeSet(pagina,"//font/a")
 links <- xmlSApply(links, xmlGetAttr, name = "href")
 dados <- cbind(links) 
-##sempre verificar o subconjunto do data.frame abaixo para saber qual subconjunto deve pegar
-links <- dados[3:36,] 
+## Listagem de Links para as edições da revista sem as duas primeiras entradas
+links <- dados[3:(length(links)),] 
 
 dados.pdf <- data.frame()
 for (i in links){

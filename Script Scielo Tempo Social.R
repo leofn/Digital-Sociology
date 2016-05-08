@@ -15,7 +15,7 @@ links <- getNodeSet(pagina,"//font/a")
 links <- xmlSApply(links, xmlGetAttr, name = "href")
 dados <- cbind(links) 
 ##sempre verificar o subconjunto do data.frame abaixo para saber qual subconjunto deve pegar
-links <- dados[3:52,] 
+links <- dados[3:(length(links)),] 
 
 dados.pdf <- data.frame()
 for (i in links){

@@ -34,5 +34,5 @@ listafinal <- with(lista.links.final, paste(frango,lista.links.final$sapply.list
 ### Download em Massa
 for (url in listafinal) {
   newName <- paste (format(Sys.time(), "%Y%m%d%H%M%S"), "-", basename(url), sep =" ")
-  download.file(url, destfile = newName)
+  download.file(url, destfile = newName, mode="wb")
 }

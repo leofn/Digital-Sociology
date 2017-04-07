@@ -1,6 +1,6 @@
 ####################################################################################
 #                                                                                  #
-#                   LAB404 - Experimentos de Webscraping e An·lise                 #
+#                   LAB404 - Experimentos de Webscraping e An√°lise                 #
 #                                                                                  #    
 #3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3#3
 
@@ -32,8 +32,8 @@ for (i in 1:23){
   dados <- rbind(dados, cbind(titulos, autores, data,links.dos.titulos))
 }
 
-## Etapa 2: pegar o conte˙dos dos post
-## Primeira coisa: criar um objetos com todos os links que est„o em dados
+## Etapa 2: pegar o conte√∫dos dos post
+## Primeira coisa: criar um objetos com todos os links que est√£o em dados
 
 links.posts <- dados$links.dos.titulos
 
@@ -58,7 +58,7 @@ for (url in links.posts){
 library(plyr)
 x = count(dados$autores, c())
 x <- x[order(x$freq),] 
-barplot(x$freq, names.arg = x$x, col = "blue", main = "N˙mero de posts por autor no blog LAB404.COM")
+barplot(x$freq, names.arg = x$x, col = "blue", main = "N√∫mero de posts por autor no blog LAB404.COM")
 text(x= values+4,labels=as.character(values),  pos=1, offset=.7, xpd=TRUE, col = "red")
 
 # Load
@@ -81,7 +81,7 @@ docs <- tm_map(docs, removeNumbers)
 docs <- tm_map(docs, removeWords, stopwords("portuguese"))
 # Remove your own stop word
 # specify your stopwords as a character vector
-docs <- tm_map(docs, removeWords, c("semana", "links", "capÌtulo","sobre", "coisas")) 
+docs <- tm_map(docs, removeWords, c("semana", "links", "cap√≠tulo","sobre", "coisas")) 
 # Remove punctuations
 docs <- tm_map(docs, removePunctuation)
 # Eliminate extra white spaces
@@ -103,16 +103,16 @@ findFreqTerms(dtm, lowfreq = 4)
 findAssocs(dtm, terms = "pesquisa", corlimit = 0.3)
 barplot(d[1:10,]$freq, las = 2, names.arg = d[1:10,]$word,
         col ="lightblue", main ="Palavras mais Frequentes",
-        ylab = "FrequÍncia de Palavras")
+        ylab = "Frequ√™ncia de Palavras")
 
 
 ### Criar o csv dos data.frames
 write.csv(dados, "dados-lab404.csv")
-### H· valores em branco nos posts que eu gostaria de eliminar 
-###  mas ainda n„o consegui
+### H√° valores em branco nos posts que eu gostaria de eliminar 
+###  mas ainda n√£o consegui
 write.csv(dados.posts, "posts-lab404.csv")
 
 ##### Frenquecia dos Posts
 x <- as.Date(dados$data)
-basic.histogram <- hist(x,main="FrequÍncia de postagens do Site Lab404.net", breaks = "year",col="grey", plot = T) 
+basic.histogram <- hist(x,main="Frequ√™ncia de postagens do Site Lab404.net", breaks = "year",col="grey", plot = T) 
 

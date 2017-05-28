@@ -1,5 +1,5 @@
 #############################################################################################
-### Script para download todos os artigos da Revista Brasileira de Ciências Sociais (RBCS)### 
+### Script para download todos os artigos da Revista Brasileira de CiÃªncias Sociais (RBCS)### 
 ### On-line version ISSN 1806-9053                                                        ###
 ### Autor: Leonardo F. Nascimento - @leofn3                                               ### 
 ### Carthago delenda est. Big data social science is the future                           ### 
@@ -29,7 +29,7 @@ lista.links.final <- dados.pdf[grep("/pdf/rbcsoc/",dados.pdf$links.pdf),]
 lista.links.final <- data.frame(sapply(lista.links.final, as.character), stringsAsFactors=FALSE)
 frango <- "http://www.scielo.br/"
 listafinal <- with(lista.links.final, paste(frango,lista.links.final[,1], sep=""))
-###Pegar todos os títulos
+###Pegar todos os tÃ­tulos
 ### 1 - Links todos os artigos
 dados.texto <- data.frame()
 for (j in links){
